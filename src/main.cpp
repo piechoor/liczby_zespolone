@@ -7,10 +7,12 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-	LZespolona Z1 = Wczytaj();
-  LZespolona Z2 = Wczytaj();
-	LZespolona Z3 = Z1 / Z2;
-  Wyswietl(Z3);
+  WyrazenieZesp wyraz;
+  wyraz.Arg1 = {1, 2};
+  wyraz.Arg2 = {5, 12};
+	wyraz.Op = Op_Odejmij;
+	
+  Wyswietl(wyraz);
 
 	cout << endl;
 /*

@@ -52,21 +52,21 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
   return Wynik;
 }
 
-LZespolona operator - (LZespolona Skl1, LZespolona Skl2)
+LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
 {
   LZespolona Wynik;
 
-  Wynik.re = Skl1.re - Skl2.re;
-  Wynik.im = Skl1.im - Skl2.im;
+  Wynik.re = Odjemna.re - Odjemnik.re;
+  Wynik.im = Odjemna.im - Odjemnik.im;
   return Wynik;
 }
 
-LZespolona operator * (LZespolona Skl1, LZespolona Skl2)
+LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
 {
   LZespolona Wynik;
 
-  Wynik.re = Skl1.re * Skl2.re - Skl1.im * Skl2.im;
-  Wynik.im = Skl1.re * Skl2.im + Skl2.re * Skl1.im;
+  Wynik.re = Czyn1.re * Czyn2.re - Czyn1.im * Czyn2.im;
+  Wynik.im = Czyn1.re * Czyn2.im + Czyn2.re * Czyn1.im;
   return Wynik;
 }
 
@@ -82,16 +82,17 @@ LZespolona operator / (LZespolona Z1, float Dzielnik)
   return Wynik;
 }
 
-LZespolona operator / (LZespolona Skl1, LZespolona Skl2)
+LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik)
 {
   LZespolona Wynik;
-  float dzielnik;
+  float czynnik;
 
-  assert((Skl1.re != 0) && (Skl2.im !=0));
-  dzielnik = pow(Modul(Skl2), 2);
-  Wynik = Skl1 * Sprzezenie(Skl2);
+  assert((Dzielna.re != 0) && (Dzielnik.im !=0));
+  czynnik = pow(Modul(Dzielnik), 2);
+  Wynik = Dzielna * Sprzezenie(Dzielnik);
 
-  Wynik = Wynik / dzielnik;
+  Wynik = Wynik / czynnik;
 
   return Wynik;
 }
+

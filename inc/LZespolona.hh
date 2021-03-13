@@ -31,12 +31,11 @@ float Modul(LZespolona Z1);
 
 LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
 
-LZespolona operator - (LZespolona Skl1, LZespolona Skl2);
+LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
 
-LZespolona operator * (LZespolona Skl1, LZespolona Skl2);
+LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
 
 LZespolona operator / (LZespolona Z1, float Dzielnik);
-
-LZespolona operator / (LZespolona Skl1, LZespolona Skl2);
+LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik);
 
 #endif
