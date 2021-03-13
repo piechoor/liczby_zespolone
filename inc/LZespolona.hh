@@ -21,10 +21,22 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
+void Wyswietl(LZespolona Z1);
 
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
-LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
-LZespolona operator / (LZespolona Dzielna, Lzespolona Czyn2);
+LZespolona Wczytaj();
 
-endif
+LZespolona Sprzezenie(LZespolona Z1);
+
+float Modul(LZespolona Z1);
+
+LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
+
+LZespolona operator - (LZespolona Skl1, LZespolona Skl2);
+
+LZespolona operator * (LZespolona Skl1, LZespolona Skl2);
+
+LZespolona operator / (LZespolona Z1, float Dzielnik);
+
+LZespolona operator / (LZespolona Skl1, LZespolona Skl2);
+
+#endif

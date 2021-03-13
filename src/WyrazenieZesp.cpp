@@ -1,7 +1,16 @@
 #include "WyrazenieZesp.hh"
+#include <iostream>
 
+using namespace std;
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
- */
+void Wyswietl(WyrazenieZesp WyrZ)
+{
+    Wyswietl(WyrZ.Arg1);
+    
+    Wyswietl(WyrZ.Arg2);
+}
+
+LZespolona Oblicz(WyrazenieZesp  WyrZ)
+{
+
+}

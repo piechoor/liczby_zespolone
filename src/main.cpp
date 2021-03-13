@@ -4,14 +4,14 @@
 
 using namespace std;
 
-void Wyswietl(LZespolona Z1)
-{
-	cout << Z1.re << showpos << Z1.im << "i";
-}
+
 int main(int argc, char **argv)
 {
-	LZespolona Z1 = {1,-2};
-	Wyswietl(Z1);
+	LZespolona Z1 = Wczytaj();
+  LZespolona Z2 = Wczytaj();
+	LZespolona Z3 = Z1 / Z2;
+  Wyswietl(Z3);
+
 	cout << endl;
 /*
 	 *
