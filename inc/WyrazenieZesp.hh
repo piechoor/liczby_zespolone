@@ -31,6 +31,10 @@ struct WyrazenieZesp {
 
 void Wyswietl(WyrazenieZesp WyrZ);
 
+Operator WczytajZnak();
+
+WyrazenieZesp WczytajWyr();
+
 LZespolona Oblicz(WyrazenieZesp WyrZ);
 
 #endif

@@ -1,5 +1,6 @@
 #include "WyrazenieZesp.hh"
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -22,23 +23,51 @@ void Wyswietl(WyrazenieZesp WyrZ)
             cout << "/";
             break;
     }
+
     Wyswietl(WyrZ.Arg2);
 }
+
+Operator WczytajZnak()
+{
+    char operacja;
+    cin >> operacja;
+    
+    //assert(operacja == '+' || operacja == '-' || operacja == '*' || operacja == '/');
+    
+    switch (operacja)
+    {
+        case '+': return Op_Dodaj;
+        case '-': return Op_Odejmij;
+        case '*': return Op_Mnoz;
+        case '/': return Op_Dziel;
+    }
+
+    return Op_Dodaj;
+}
+
+WyrazenieZesp WczytajWyr()
+{
+    WyrazenieZesp WyrZ;
+
+    WyrZ.Arg1 = WczytajLicz();
+    WyrZ.Op = WczytajZnak();
+    WyrZ.Arg2 = WczytajLicz();
+
+    return WyrZ;
+}
+
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ)
 {
     switch (WyrZ.Op)
     {
-        case Op_Dodaj: 
-            return WyrZ.Arg1 + WyrZ.Arg2;
-        case Op_Odejmij: 
-            return WyrZ.Arg1 - WyrZ.Arg2;
-        case Op_Mnoz: 
-            return WyrZ.Arg1 * WyrZ.Arg2;
-        case Op_Dziel: 
-            return WyrZ.Arg1 / WyrZ.Arg2;
+        case Op_Dodaj: return WyrZ.Arg1 + WyrZ.Arg2;
+        case Op_Odejmij: return WyrZ.Arg1 - WyrZ.Arg2;
+        case Op_Mnoz: return WyrZ.Arg1 * WyrZ.Arg2;
+        case Op_Dziel: return WyrZ.Arg1 / WyrZ.Arg2;
     }
 
     LZespolona Z1 = {0,0};
     return Z1;
 }
+

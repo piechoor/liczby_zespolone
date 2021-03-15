@@ -10,7 +10,7 @@ void Wyswietl(LZespolona Z1)
 	cout << "(" << Z1.re << showpos << Z1.im << "i)";
 }
 
-LZespolona Wczytaj()
+LZespolona WczytajLicz()
 {
   LZespolona Wynik;
   float Rzecz, Uroj;

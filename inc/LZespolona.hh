@@ -23,7 +23,7 @@ struct  LZespolona {
 
 void Wyswietl(LZespolona Z1);
 
-LZespolona Wczytaj();
+LZespolona WczytajLicz();
 
 LZespolona Sprzezenie(LZespolona Z1);
 
