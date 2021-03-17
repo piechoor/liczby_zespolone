@@ -7,24 +7,12 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-  // WyrazenieZesp wyraz;
-  // wyraz.Arg1 = {1, 2};
-  // wyraz.Arg2 = {5, 12};
-	// wyraz.Op = Op_Mnoz;
-	
-  // cout << "Wyswietlenie wyrazenia: ";
-  // Wyswietl(wyraz);
-  // cout << endl;
 
-  // cout << "Wyswielenie wyniku: ";
-  // Wyswietl(Oblicz(wyraz));
-  // cout << endl;
-
-  WyrazenieZesp przyklad;
-  przyklad = WczytajWyr();
-  Wyswietl(przyklad);
+  WyrazenieZesp Z1;
+  Z1 = WczytajWyr();
+  Wyswietl(Z1);
   cout << endl;
-  Wyswietl(Oblicz(przyklad));
+
 /*
 	 *
   if (argc < 2) {

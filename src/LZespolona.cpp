@@ -7,13 +7,13 @@ using namespace std;
 
 void Wyswietl(LZespolona Z1)
 {
-	cout << "(" << Z1.re << showpos << Z1.im << "i)";
+	cout << "(" << Z1.re << showpos << Z1.im << noshowpos << "i)";
 }
 
 LZespolona WczytajLicz()
 {
   LZespolona Wynik;
-  float Rzecz, Uroj;
+  double Rzecz, Uroj;
   cin >> Rzecz >> Uroj;
   
   Wynik.re = Rzecz;
@@ -28,9 +28,9 @@ LZespolona Sprzezenie(LZespolona Z1)
   return Z1;
 }
 
-float Modul(LZespolona Z1)
+double Modul(LZespolona Z1)
 {
-  float modul;
+  double modul;
   modul = sqrt(pow(Z1.re, 2) + pow(Z1.im, 2));
   return modul;
 }
@@ -70,7 +70,7 @@ LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
   return Wynik;
 }
 
-LZespolona operator / (LZespolona Z1, float Dzielnik)
+LZespolona operator / (LZespolona Z1, double Dzielnik)
 {
   LZespolona Wynik;
 
@@ -85,7 +85,7 @@ LZespolona operator / (LZespolona Z1, float Dzielnik)
 LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik)
 {
   LZespolona Wynik;
-  float czynnik;
+  double czynnik;
 
   assert((Dzielna.re != 0) && (Dzielnik.im !=0));
   czynnik = pow(Modul(Dzielnik), 2);

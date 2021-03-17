@@ -32,7 +32,7 @@ Operator WczytajZnak()
     char operacja;
     cin >> operacja;
     
-    //assert(operacja == '+' || operacja == '-' || operacja == '*' || operacja == '/');
+    assert(operacja == '+' || operacja == '-' || operacja == '*' || operacja == '/');
     
     switch (operacja)
     {
@@ -48,10 +48,17 @@ Operator WczytajZnak()
 WyrazenieZesp WczytajWyr()
 {
     WyrazenieZesp WyrZ;
+    char nawiasy, im;
 
+    cin >> nawiasy;
     WyrZ.Arg1 = WczytajLicz();
+    cin >> im;
+    cin >> nawiasy;
     WyrZ.Op = WczytajZnak();
+    cin >> nawiasy;
     WyrZ.Arg2 = WczytajLicz();
+    cin >> im;
+    cin >> nawiasy;
 
     return WyrZ;
 }
