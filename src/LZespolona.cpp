@@ -7,14 +7,15 @@ using namespace std;
 
 void Wyswietl(LZespolona Z1)
 {
-	cout << "(" << Z1.re << showpos << Z1.im << noshowpos << "i)";
+	cout << "("  << noshowpos << Z1.re << showpos << Z1.im << "i)";
 }
 
 LZespolona WczytajLicz()
 {
   LZespolona Wynik;
+  char im; // Bufor na znak 'i'
   double Rzecz, Uroj;
-  cin >> Rzecz >> Uroj;
+  cin >> Rzecz >> Uroj >> im; // Wczytanie liczby zespolonej
   
   Wynik.re = Rzecz;
   Wynik.im = Uroj;
@@ -24,14 +25,14 @@ LZespolona WczytajLicz()
 
 LZespolona Sprzezenie(LZespolona Z1)
 {
-  Z1.im *= (-1);
+  Z1.im *= (-1); // Zamiana znaku urojonej części liczby rzeczywistej
   return Z1;
 }
 
 double Modul(LZespolona Z1)
 {
   double modul;
-  modul = sqrt(pow(Z1.re, 2) + pow(Z1.im, 2));
+  modul = sqrt(pow(Z1.re, 2) + pow(Z1.im, 2)); // Oblicza modul liczby zespolonej
   return modul;
 }
 
@@ -52,6 +53,14 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
   return Wynik;
 }
 
+/*!
+ * Realizuje odejmowanie dwoch liczb zespolonych.
+ * Argumenty:
+ *    Odjemna - pierwszy skladnik odejmowania,
+ *    Odjemnik - drugi skladnik odejmowania.
+ * Zwraca:
+ *    Różnicę dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
 {
   LZespolona Wynik;
@@ -61,6 +70,14 @@ LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
   return Wynik;
 }
 
+/*!
+ * Realizuje mnożenie dwoch liczb zespolonych.
+ * Argumenty:
+ *    Czyn1 - pierwszy skladnik mnożenia,
+ *    Czyn2 - drugi skladnik mnożenia.
+ * Zwraca:
+ *    Iloczyn dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
 {
   LZespolona Wynik;
@@ -70,11 +87,19 @@ LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
   return Wynik;
 }
 
+/*!
+ * Realizuje dzielenie liczby zespolonej przez liczbę rzeczywistą różną od zera
+ * Argumenty:
+ *    Z1 - liczba zespolona,
+ *    Dzielnik - liczba rzeczywista.
+ * Zwraca:
+ *    Iloraz liczby zespolonej i rzeczywistej.
+ */
 LZespolona operator / (LZespolona Z1, double Dzielnik)
 {
   LZespolona Wynik;
 
-  assert(Dzielnik != 0);
+  assert(Dzielnik != 0); // Sprawdzenie czy dzielnik jest różny od zera
 
   Wynik.re = Z1.re / Dzielnik;
   Wynik.im = Z1.im / Dzielnik;
@@ -82,12 +107,21 @@ LZespolona operator / (LZespolona Z1, double Dzielnik)
   return Wynik;
 }
 
+/*!
+ * Realizuje dzielenie dwoch liczb zespolonych.
+ * Argumenty:
+ *    Dzielna - pierwszy skladnik dzielenia,
+ *    Dzielnik - drugi skladnik dzielenia.
+ * Zwraca:
+ *    Iloraz dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik)
 {
   LZespolona Wynik;
   double czynnik;
 
-  assert((Dzielna.re != 0) && (Dzielnik.im !=0));
+  assert((Dzielna.re != 0) && (Dzielnik.im !=0)); // Sprawdzenie czy możliwe jest dzielenie
+
   czynnik = pow(Modul(Dzielnik), 2);
   Wynik = Dzielna * Sprzezenie(Dzielnik);
 

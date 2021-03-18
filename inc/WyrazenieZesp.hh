@@ -22,19 +22,27 @@ struct WyrazenieZesp {
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
 };
 
-
 /*
- * Funkcje ponizej nalezy zdefiniowac w module.
- *
- */
-
-
+* Funkcja wyswietla pobrane wyrazenie zespolone w formacie (a+bi)'operator'(c+di)
+*/
 void Wyswietl(WyrazenieZesp WyrZ);
 
+/*
+* Funkcja pobiera znak ze standardowego wejścia i zwraca odpowiedni
+* operator typu Operator
+*/
 Operator WczytajZnak();
 
+/*
+* Funkcja zwraca pobrane ze standardowego wejścia wyrażenie zespolone
+* Musi być ono postaci (a+bi)'operator'(c+di)
+*/
 WyrazenieZesp WczytajWyr();
 
+/*
+* Funkcja interpretuje podane wyrazenie zespolone, oblicz je oraz
+* zwraca jego wartość
+*/
 LZespolona Oblicz(WyrazenieZesp WyrZ);
 
 #endif

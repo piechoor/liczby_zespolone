@@ -6,9 +6,9 @@ using namespace std;
 
 void Wyswietl(WyrazenieZesp WyrZ)
 {
-    Wyswietl(WyrZ.Arg1);
+    Wyswietl(WyrZ.Arg1); // Wyświetlenie pierwszej liczby zespolonej
 
-    switch(WyrZ.Op)
+    switch(WyrZ.Op) // Wyświetlenie operatora
     {
         case Op_Dodaj:
             cout << "+";
@@ -24,17 +24,18 @@ void Wyswietl(WyrazenieZesp WyrZ)
             break;
     }
 
-    Wyswietl(WyrZ.Arg2);
+    Wyswietl(WyrZ.Arg2); // Wyświetlenie drugiej liczby zespolonej
 }
 
 Operator WczytajZnak()
 {
-    char operacja;
-    cin >> operacja;
+    char operacja; 
+    cin >> operacja; // Wczytanie znaku operacji
     
+    // Asercja sprawdzająca czy podano prawidłową opercję
     assert(operacja == '+' || operacja == '-' || operacja == '*' || operacja == '/');
     
-    switch (operacja)
+    switch (operacja) // Zwrócenie odpowiedniego typu
     {
         case '+': return Op_Dodaj;
         case '-': return Op_Odejmij;
@@ -48,16 +49,15 @@ Operator WczytajZnak()
 WyrazenieZesp WczytajWyr()
 {
     WyrazenieZesp WyrZ;
-    char nawiasy, im;
+    char nawiasy; // Bufor na nawiasy
 
+    // Wczytanie wyrazenia zespolonego
     cin >> nawiasy;
     WyrZ.Arg1 = WczytajLicz();
-    cin >> im;
     cin >> nawiasy;
     WyrZ.Op = WczytajZnak();
     cin >> nawiasy;
     WyrZ.Arg2 = WczytajLicz();
-    cin >> im;
     cin >> nawiasy;
 
     return WyrZ;
@@ -66,6 +66,7 @@ WyrazenieZesp WczytajWyr()
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ)
 {
+    // W zaleznosci od zadanego operatora zwrócenie prawidłowego wyniku dzialania
     switch (WyrZ.Op)
     {
         case Op_Dodaj: return WyrZ.Arg1 + WyrZ.Arg2;

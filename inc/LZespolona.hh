@@ -18,24 +18,38 @@ struct  LZespolona {
 
 
 /*
- * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
- */
-
+* Funkcja wyswietla pobraną liczbę zespoloną w formacie (a+bi)
+*/
 void Wyswietl(LZespolona Z1);
 
+/*
+* Funkcja zwraca pobraną ze standardowego wejścia liczbe zespoloną
+* Musi być ona postaci a+bi
+*/
 LZespolona WczytajLicz();
 
+/*
+* Funckja zwraca sprzężenie pobranej liczby zespolonej
+*/
 LZespolona Sprzezenie(LZespolona Z1);
 
+/*
+* Funckja zwraca moduł pobranej liczby zespolonej
+*/
 double Modul(LZespolona Z1);
 
-LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
-
-LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
-
-LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
-
+/*
+* Przeciążenie operatora dzielenia dla opercji dzielenia liczby 
+* zespolonej przez liczbę rzeczywistą
+*/
 LZespolona operator / (LZespolona Z1, double Dzielnik);
+
+/*
+* Przeciążenia operatorów operacji na dwóch liczbach zespolonych
+*/
+LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
+LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
 LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik);
 
 #endif
