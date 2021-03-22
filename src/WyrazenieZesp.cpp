@@ -4,29 +4,6 @@
 
 using namespace std;
 
-void Wyswietl(WyrazenieZesp WyrZ)
-{
-    Wyswietl(WyrZ.Arg1); // Wyświetlenie pierwszej liczby zespolonej
-
-    switch(WyrZ.Op) // Wyświetlenie operatora
-    {
-        case Op_Dodaj:
-            cout << "+";
-            break;
-        case Op_Odejmij:
-            cout << "-";
-            break;
-        case Op_Mnoz:
-            cout << "*";
-            break;
-        case Op_Dziel:
-            cout << "/";
-            break;
-    }
-
-    Wyswietl(WyrZ.Arg2); // Wyświetlenie drugiej liczby zespolonej
-}
-
 Operator WczytajZnak()
 {
     char operacja; 
@@ -46,6 +23,25 @@ Operator WczytajZnak()
     return Op_Dodaj;
 }
 
+void Wyswietl(Operator Op)
+{
+    switch(Op) // Wyświetlenie operatora
+    {
+        case Op_Dodaj:
+            cout << "+";
+            break;
+        case Op_Odejmij:
+            cout << "-";
+            break;
+        case Op_Mnoz:
+            cout << "*";
+            break;
+        case Op_Dziel:
+            cout << "/";
+            break;
+    }
+}
+
 WyrazenieZesp WczytajWyr()
 {
     WyrazenieZesp WyrZ;
@@ -63,6 +59,19 @@ WyrazenieZesp WczytajWyr()
     return WyrZ;
 }
 
+ostream& operator << (ostream &Str_wyj, WyrazenieZesp W1)
+{
+    Str_wyj << W1.Arg1;
+    Wyswietl(W1.Op);
+    Str_wyj << W1.Arg2;
+
+    return Str_wyj;
+}
+
+istream& operator >> (istream &Str_wej, WyrazenieZesp &W1)
+{
+    return Str_wej;
+}
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ)
 {

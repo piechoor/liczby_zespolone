@@ -1,5 +1,6 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
+#include <iostream>
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
@@ -16,12 +17,9 @@ struct  LZespolona {
   double   im;    /*! Pole repezentuje czesc urojona. */
 };
 
+std::ostream& operator << (std::ostream &Str_wyj, LZespolona Z1);
 
-/*
-* Funkcja wyswietla pobraną liczbę zespoloną w formacie (a+bi)
-*/
-void Wyswietl(LZespolona Z1);
-
+std::istream& operator >> (std::istream &Str_wej, LZespolona &Z1);
 /*
 * Funkcja zwraca pobraną ze standardowego wejścia liczbe zespoloną
 * Musi być ona postaci a+bi

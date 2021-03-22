@@ -23,21 +23,21 @@ struct WyrazenieZesp {
 };
 
 /*
-* Funkcja wyswietla pobrane wyrazenie zespolone w formacie (a+bi)'operator'(c+di)
-*/
-void Wyswietl(WyrazenieZesp WyrZ);
-
-/*
 * Funkcja pobiera znak ze standardowego wejścia i zwraca odpowiedni
 * operator typu Operator
 */
 Operator WczytajZnak();
 
+void Wyswietl(Operator Op);
 /*
 * Funkcja zwraca pobrane ze standardowego wejścia wyrażenie zespolone
 * Musi być ono postaci (a+bi)'operator'(c+di)
 */
 WyrazenieZesp WczytajWyr();
+
+std::ostream& operator << (std::ostream &Str_wyj, WyrazenieZesp W1);
+
+std::istream& operator >> (std::istream &Str_wej, WyrazenieZesp &W1);
 
 /*
 * Funkcja interpretuje podane wyrazenie zespolone, oblicz je oraz

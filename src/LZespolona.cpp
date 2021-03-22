@@ -5,9 +5,22 @@
 
 using namespace std;
 
-void Wyswietl(LZespolona Z1)
+ostream& operator << (ostream &Str_wyj, LZespolona Z1)
 {
-	cout << "("  << noshowpos << Z1.re << showpos << Z1.im << "i)";
+  Str_wyj << "(" << Z1.re << showpos << Z1.im << noshowpos << "i)";
+  return Str_wyj;
+} 
+
+istream& operator >> (istream &Str_wej, LZespolona &Z1)
+{
+    char nawias_L = 'x', nawias_P = 'x', Znak_i = 'x';
+
+    Str_wej >> nawias_L >> Z1.re >> Z1.im >> Znak_i >> nawias_P;
+
+    if (nawias_L != '(' || nawias_P != ')' || Znak_i != 'i')
+      Str_wej.setstate(ios::failbit);
+
+    return Str_wej;
 }
 
 LZespolona WczytajLicz()

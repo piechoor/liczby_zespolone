@@ -8,28 +8,27 @@ using namespace std;
 int main(int argc, char **argv)
 {
 
-  LZespolona Z1, Z2;
-  WyrazenieZesp W1, W2;
-  cout << "Pierwsza liczba:" << endl;
-  Z1 = WczytajLicz();
-  cout << "Druga liczba:" << endl;
-  Z2 = WczytajLicz();
+  LZespolona Z1;
+  WyrazenieZesp W1;
+  cout << "Liczba:" << endl;
+  cin >> Z1;
   W1.Arg1 = Z1;
-  W1.Arg2 = Z2;
+  W1.Arg2 = Z1;
   W1.Op = Op_Dodaj;
-  cout << "Wyrazenie:" << endl;
-  W2 = WczytajWyr();
-  cout << "Wyswietlona pierwsza liczba:" << endl;
-  Wyswietl(Z1);
-  cout << endl << "Wyswietlona druga liczba:" << endl;
-  Wyswietl(Z2);
+  //cout << "Wyrazenie:" << endl;
+  //W2 = WczytajWyr();
+  if (cin.fail()) cout << "Wczytanie liczby nie powiodlo sie" << endl;
+    else {
+      cout << "Wyswietlona liczba:" << endl;
+      cout << Z1;
+    }
   cout << endl << "Wyswietlone pierwsze wyrazenie:" << endl;
-  Wyswietl(W1);
-  cout << endl << "Wyswietlone drugie wyrazenie:" << endl;
-  Wyswietl(W2);
+  cout << W1;
+  //cout << endl << "Wyswietlone drugie wyrazenie:" << endl;
+  //Wyswietl(W2);
   cout << endl;
-  cout << "Obliczone wyrazenie:" << endl;
-  Wyswietl(Oblicz(W2));
+  //cout << "Obliczone wyrazenie:" << endl;
+  //Wyswietl(Oblicz(W2));
   cout << endl;
 
 /*
