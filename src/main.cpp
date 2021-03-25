@@ -8,29 +8,6 @@ using namespace std;
 int main(int argc, char **argv)
 {
 
-  LZespolona Z1;
-  WyrazenieZesp W1;
-  cout << "Liczba:" << endl;
-  cin >> Z1;
-  W1.Arg1 = Z1;
-  W1.Arg2 = Z1;
-  W1.Op = Op_Dodaj;
-  cout << "Wyrazenie:" << endl;
-  cin >> W1;
-  if (cin.fail()) cout << "Wczytanie liczby nie powiodlo sie" << endl;
-    else {
-      cout << "Wyswietlona liczba:" << endl;
-      cout << Z1;
-    }
-  cout << endl << "Wyswietlone wyrazenie:" << endl;
-  cout << W1;
-  cout << endl;
-  cout << "Obliczone wyrazenie:" << endl;
-  cout << Oblicz(W1);
-  cout << endl;
-
-/*
-	 *
   if (argc < 2) {
     cout << endl;
     cout << " Brak opcji okreslajacej rodzaj testu." << endl;
@@ -54,15 +31,29 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
+  LZespolona Odp, PrawOdp;
+  int Punkty = 0;
   
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
+    cout << "Wyrazenie: " << endl;
+    cout << WyrZ_PytanieTestowe << endl;
+    cout << "Podaj wynik wyrazenia:";
+    cin >> Odp;
+    while (cin.fail()) {
+      cin.clear();
+      cout << "Podano liczbe w zlym formacie, sprobuj jeszcze raz." << endl;
+      cin >> Odp;
+    }
+    PrawOdp = Oblicz(WyrZ_PytanieTestowe);
+    if (Odp.re == PrawOdp.re && Odp.im == PrawOdp.im) {
+      cout << "Prawidlowa odpowiedz." << endl; 
+      Punkty++;
+    }
+    else cout << "Nierawidlowa odpowiedz." << endl; 
   }
 
   
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;
-*/
 }
