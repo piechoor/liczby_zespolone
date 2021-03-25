@@ -23,31 +23,9 @@ Operator WczytajZnak()
     return Op_Dodaj;
 }
 
-void Wyswietl(Operator Op)
-{
-    switch(Op) // Wyświetlenie operatora
-    {
-        case Op_Dodaj:
-            cout << "+";
-            break;
-        case Op_Odejmij:
-            cout << "-";
-            break;
-        case Op_Mnoz:
-            cout << "*";
-            break;
-        case Op_Dziel:
-            cout << "/";
-            break;
-    }
-}
-
 ostream& operator << (ostream &Str_wyj, WyrazenieZesp W1)
 {
-    Str_wyj << W1.Arg1;
-    Wyswietl(W1.Op);
-    Str_wyj << W1.Arg2;
-
+    Str_wyj << W1.Arg1 << W1.Op << W1.Arg2;
     return Str_wyj;
 }
 
@@ -57,6 +35,12 @@ istream& operator >> (istream &Str_wej, WyrazenieZesp &W1)
     W1.Op = WczytajZnak();
     Str_wej >> W1.Arg2;
     return Str_wej;
+}
+
+ostream& operator << (ostream &Str_wyj, Operator Op)
+{
+    const char ZnakOp[] = "+-*/";
+    return Str_wyj << ZnakOp[Op];
 }
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ)

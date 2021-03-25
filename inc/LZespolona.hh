@@ -15,6 +15,9 @@
 struct  LZespolona {
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
+  LZespolona operator + (LZespolona Z2) const;
+  LZespolona operator - (LZespolona Z2) const;
+  LZespolona operator * (LZespolona Z2) const;
 };
 
 std::ostream& operator << (std::ostream &Str_wyj, LZespolona Z1);
@@ -40,9 +43,9 @@ LZespolona operator / (LZespolona Z1, double Dzielnik);
 /*
 * Przeciążenia operatorów operacji na dwóch liczbach zespolonych
 */
-LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
-LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
+//LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
+//LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
+//LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
 LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik);
 
 #endif

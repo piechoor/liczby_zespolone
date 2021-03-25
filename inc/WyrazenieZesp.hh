@@ -28,7 +28,7 @@ struct WyrazenieZesp {
 */
 Operator WczytajZnak();
 
-void Wyswietl(Operator Op);
+std::ostream& operator << (std::ostream &Str_wyj, Operator Op);
 
 std::ostream& operator << (std::ostream &Str_wyj, WyrazenieZesp W1);
 

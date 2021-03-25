@@ -23,6 +23,7 @@ istream& operator >> (istream &Str_wej, LZespolona &Z1)
     return Str_wej;
 }
 
+
 LZespolona Sprzezenie(LZespolona Z1)
 {
   Z1.im *= (-1); // Zamiana znaku urojonej części liczby rzeczywistej
@@ -44,6 +45,31 @@ double Modul(LZespolona Z1)
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
+
+LZespolona LZespolona::operator + (LZespolona Z2) const
+{
+  Z2.re += this->re;
+  Z2.im += this->im;
+  return Z2;
+}
+
+LZespolona LZespolona::operator - (LZespolona Z2) const
+{
+  Z2.re = this->re - Z2.re;
+  Z2.im = this->im - Z2.im;
+  return Z2;
+}
+
+LZespolona LZespolona::operator * (LZespolona Z2) const
+{
+  LZespolona Wynik;
+
+  Wynik.re = this->re * Z2.re - this->im * Z2.im;
+  Wynik.im = this->re * Z2.im + Z2.re * this->im;
+  return Wynik;
+}
+
+/*
 LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
 {
   LZespolona  Wynik;
@@ -53,7 +79,6 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
   return Wynik;
 }
 
-/*!
  * Realizuje odejmowanie dwoch liczb zespolonych.
  * Argumenty:
  *    Odjemna - pierwszy skladnik odejmowania,
@@ -61,6 +86,7 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
  * Zwraca:
  *    Różnicę dwoch skladnikow przekazanych jako parametry.
  */
+/*
 LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
 {
   LZespolona Wynik;
@@ -69,7 +95,7 @@ LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
   Wynik.im = Odjemna.im - Odjemnik.im;
   return Wynik;
 }
-
+*/
 /*!
  * Realizuje mnożenie dwoch liczb zespolonych.
  * Argumenty:
@@ -78,6 +104,7 @@ LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
  * Zwraca:
  *    Iloczyn dwoch skladnikow przekazanych jako parametry.
  */
+/*
 LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
 {
   LZespolona Wynik;
@@ -86,7 +113,7 @@ LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
   Wynik.im = Czyn1.re * Czyn2.im + Czyn2.re * Czyn1.im;
   return Wynik;
 }
-
+*/
 /*!
  * Realizuje dzielenie liczby zespolonej przez liczbę rzeczywistą różną od zera
  * Argumenty:
@@ -120,7 +147,7 @@ LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik)
   LZespolona Wynik;
   double czynnik;
 
-  assert((Dzielna.re != 0) && (Dzielnik.im !=0)); // Sprawdzenie czy możliwe jest dzielenie
+  assert((Dzielnik.re != 0) || (Dzielnik.im !=0)); // Sprawdzenie czy możliwe jest dzielenie
 
   czynnik = pow(Modul(Dzielnik), 2);
   Wynik = Dzielna * Sprzezenie(Dzielnik);
