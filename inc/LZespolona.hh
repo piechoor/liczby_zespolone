@@ -20,11 +20,6 @@ struct  LZespolona {
 std::ostream& operator << (std::ostream &Str_wyj, LZespolona Z1);
 
 std::istream& operator >> (std::istream &Str_wej, LZespolona &Z1);
-/*
-* Funkcja zwraca pobraną ze standardowego wejścia liczbe zespoloną
-* Musi być ona postaci a+bi
-*/
-LZespolona WczytajLicz();
 
 /*
 * Funckja zwraca sprzężenie pobranej liczby zespolonej

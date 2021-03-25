@@ -42,23 +42,6 @@ void Wyswietl(Operator Op)
     }
 }
 
-WyrazenieZesp WczytajWyr()
-{
-    WyrazenieZesp WyrZ;
-    char nawiasy; // Bufor na nawiasy
-
-    // Wczytanie wyrazenia zespolonego
-    cin >> nawiasy;
-    WyrZ.Arg1 = WczytajLicz();
-    cin >> nawiasy;
-    WyrZ.Op = WczytajZnak();
-    cin >> nawiasy;
-    WyrZ.Arg2 = WczytajLicz();
-    cin >> nawiasy;
-
-    return WyrZ;
-}
-
 ostream& operator << (ostream &Str_wyj, WyrazenieZesp W1)
 {
     Str_wyj << W1.Arg1;
@@ -70,6 +53,9 @@ ostream& operator << (ostream &Str_wyj, WyrazenieZesp W1)
 
 istream& operator >> (istream &Str_wej, WyrazenieZesp &W1)
 {
+    Str_wej >> W1.Arg1;
+    W1.Op = WczytajZnak();
+    Str_wej >> W1.Arg2;
     return Str_wej;
 }
 

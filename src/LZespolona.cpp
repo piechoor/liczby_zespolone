@@ -23,19 +23,6 @@ istream& operator >> (istream &Str_wej, LZespolona &Z1)
     return Str_wej;
 }
 
-LZespolona WczytajLicz()
-{
-  LZespolona Wynik;
-  char im; // Bufor na znak 'i'
-  double Rzecz, Uroj;
-  cin >> Rzecz >> Uroj >> im; // Wczytanie liczby zespolonej
-  
-  Wynik.re = Rzecz;
-  Wynik.im = Uroj;
-
-  return Wynik;
-}
-
 LZespolona Sprzezenie(LZespolona Z1)
 {
   Z1.im *= (-1); // Zamiana znaku urojonej części liczby rzeczywistej

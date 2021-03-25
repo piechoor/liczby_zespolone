@@ -15,20 +15,18 @@ int main(int argc, char **argv)
   W1.Arg1 = Z1;
   W1.Arg2 = Z1;
   W1.Op = Op_Dodaj;
-  //cout << "Wyrazenie:" << endl;
-  //W2 = WczytajWyr();
+  cout << "Wyrazenie:" << endl;
+  cin >> W1;
   if (cin.fail()) cout << "Wczytanie liczby nie powiodlo sie" << endl;
     else {
       cout << "Wyswietlona liczba:" << endl;
       cout << Z1;
     }
-  cout << endl << "Wyswietlone pierwsze wyrazenie:" << endl;
+  cout << endl << "Wyswietlone wyrazenie:" << endl;
   cout << W1;
-  //cout << endl << "Wyswietlone drugie wyrazenie:" << endl;
-  //Wyswietl(W2);
   cout << endl;
-  //cout << "Obliczone wyrazenie:" << endl;
-  //Wyswietl(Oblicz(W2));
+  cout << "Obliczone wyrazenie:" << endl;
+  cout << Oblicz(W1);
   cout << endl;
 
 /*

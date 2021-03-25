@@ -29,11 +29,6 @@ struct WyrazenieZesp {
 Operator WczytajZnak();
 
 void Wyswietl(Operator Op);
-/*
-* Funkcja zwraca pobrane ze standardowego wejścia wyrażenie zespolone
-* Musi być ono postaci (a+bi)'operator'(c+di)
-*/
-WyrazenieZesp WczytajWyr();
 
 std::ostream& operator << (std::ostream &Str_wyj, WyrazenieZesp W1);
 
