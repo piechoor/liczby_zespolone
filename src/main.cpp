@@ -1,13 +1,13 @@
 #include <iostream>
+//#include <cstdio>
 #include "BazaTestu.hh"
-#include <cstdio>
+#include "Statystyki.hh"
 
 using namespace std;
 
 
 int main(int argc, char **argv)
 {
-
   if (argc < 2) {
     cout << endl;
     cout << " Brak opcji okreslajacej rodzaj testu." << endl;
@@ -32,8 +32,9 @@ int main(int argc, char **argv)
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
   LZespolona Odp, PrawOdp;
-  int Punkty = 0;
-  
+  Statystyka Odpowiedzi;
+  Odpowiedzi.Inicjuj_Stat();
+
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
     cout << "Wyrazenie: " << endl;
     cout << WyrZ_PytanieTestowe << endl;
@@ -44,16 +45,20 @@ int main(int argc, char **argv)
       cout << "Podano liczbe w zlym formacie, sprobuj jeszcze raz." << endl;
       cin >> Odp;
     }
-    PrawOdp = Oblicz(WyrZ_PytanieTestowe);
+    PrawOdp = WyrZ_PytanieTestowe.Oblicz();
     if (Odp.re == PrawOdp.re && Odp.im == PrawOdp.im) {
-      cout << "Prawidlowa odpowiedz." << endl; 
-      Punkty++;
+      cout << "Prawidlowa odpowiedz." << endl;
+      Odpowiedzi.Dobre++;
     }
-    else cout << "Nierawidlowa odpowiedz." << endl; 
+    else {
+    cout << "Nierawidlowa odpowiedz." << endl;
+    Odpowiedzi.Zle++;
+    }
   }
 
   
   cout << endl;
-  cout << " Koniec testu" << endl;
+  Odpowiedzi.Wyswietl_Stat();
+  cout << "Koniec testu" << endl;
   cout << endl;
 }

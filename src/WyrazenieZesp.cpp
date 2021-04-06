@@ -23,6 +23,12 @@ Operator WczytajZnak()
     return Op_Dodaj;
 }
 
+ostream& operator << (ostream &Str_wyj, Operator Op)
+{
+    const char ZnakOp[] = "+-*/";
+    return Str_wyj << ZnakOp[Op];
+}
+
 ostream& operator << (ostream &Str_wyj, WyrazenieZesp W1)
 {
     Str_wyj << W1.Arg1 << W1.Op << W1.Arg2;
@@ -37,21 +43,15 @@ istream& operator >> (istream &Str_wej, WyrazenieZesp &W1)
     return Str_wej;
 }
 
-ostream& operator << (ostream &Str_wyj, Operator Op)
-{
-    const char ZnakOp[] = "+-*/";
-    return Str_wyj << ZnakOp[Op];
-}
-
-LZespolona Oblicz(WyrazenieZesp  WyrZ)
+LZespolona WyrazenieZesp::Oblicz()
 {
     // W zaleznosci od zadanego operatora zwrócenie prawidłowego wyniku dzialania
-    switch (WyrZ.Op)
+    switch (this->Op)
     {
-        case Op_Dodaj: return WyrZ.Arg1 + WyrZ.Arg2;
-        case Op_Odejmij: return WyrZ.Arg1 - WyrZ.Arg2;
-        case Op_Mnoz: return WyrZ.Arg1 * WyrZ.Arg2;
-        case Op_Dziel: return WyrZ.Arg1 / WyrZ.Arg2;
+        case Op_Dodaj: return this->Arg1 + this->Arg2;
+        case Op_Odejmij: return this->Arg1 - this->Arg2;
+        case Op_Mnoz: return this->Arg1 * this->Arg2;
+        case Op_Dziel: return this->Arg1 / this->Arg2;
     }
 
     LZespolona Z1 = {0,0};

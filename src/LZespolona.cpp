@@ -23,18 +23,17 @@ istream& operator >> (istream &Str_wej, LZespolona &Z1)
     return Str_wej;
 }
 
-
-LZespolona Sprzezenie(LZespolona Z1)
+double LZespolona::Modul()
 {
-  Z1.im *= (-1); // Zamiana znaku urojonej części liczby rzeczywistej
-  return Z1;
+  return sqrt(pow(this->re, 2) + pow(this->im, 2)); // Oblicza modul liczby zespolonej
 }
 
-double Modul(LZespolona Z1)
+LZespolona LZespolona::Sprzezenie()
 {
-  double modul;
-  modul = sqrt(pow(Z1.re, 2) + pow(Z1.im, 2)); // Oblicza modul liczby zespolonej
-  return modul;
+  LZespolona Wynik;
+  Wynik.re = this->re;
+  Wynik.im = -this->im; // Zamiana znaku urojonej części liczby rzeczywistej
+  return Wynik;
 }
 
 /*!
@@ -70,15 +69,6 @@ LZespolona LZespolona::operator * (LZespolona Z2) const
 }
 
 /*
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
-{
-  LZespolona  Wynik;
-  
-  Wynik.re = Skl1.re + Skl2.re;
-  Wynik.im = Skl1.im + Skl2.im;
-  return Wynik;
-}
-
  * Realizuje odejmowanie dwoch liczb zespolonych.
  * Argumenty:
  *    Odjemna - pierwszy skladnik odejmowania,
@@ -87,15 +77,7 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
  *    Różnicę dwoch skladnikow przekazanych jako parametry.
  */
 /*
-LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
-{
-  LZespolona Wynik;
 
-  Wynik.re = Odjemna.re - Odjemnik.re;
-  Wynik.im = Odjemna.im - Odjemnik.im;
-  return Wynik;
-}
-*/
 /*!
  * Realizuje mnożenie dwoch liczb zespolonych.
  * Argumenty:
@@ -104,16 +86,6 @@ LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik)
  * Zwraca:
  *    Iloczyn dwoch skladnikow przekazanych jako parametry.
  */
-/*
-LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
-{
-  LZespolona Wynik;
-
-  Wynik.re = Czyn1.re * Czyn2.re - Czyn1.im * Czyn2.im;
-  Wynik.im = Czyn1.re * Czyn2.im + Czyn2.re * Czyn1.im;
-  return Wynik;
-}
-*/
 /*!
  * Realizuje dzielenie liczby zespolonej przez liczbę rzeczywistą różną od zera
  * Argumenty:
@@ -122,14 +94,15 @@ LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2)
  * Zwraca:
  *    Iloraz liczby zespolonej i rzeczywistej.
  */
-LZespolona operator / (LZespolona Z1, double Dzielnik)
+
+LZespolona LZespolona::operator / (double Dzielnik) const
 {
   LZespolona Wynik;
 
   assert(Dzielnik != 0); // Sprawdzenie czy dzielnik jest różny od zera
 
-  Wynik.re = Z1.re / Dzielnik;
-  Wynik.im = Z1.im / Dzielnik;
+  Wynik.re = this->re / Dzielnik;
+  Wynik.im = this->im / Dzielnik;
 
   return Wynik;
 }
@@ -142,15 +115,15 @@ LZespolona operator / (LZespolona Z1, double Dzielnik)
  * Zwraca:
  *    Iloraz dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona operator / (LZespolona Dzielna, LZespolona Dzielnik)
+LZespolona LZespolona::operator / (LZespolona Dzielnik)
 {
   LZespolona Wynik;
   double czynnik;
 
   assert((Dzielnik.re != 0) || (Dzielnik.im !=0)); // Sprawdzenie czy możliwe jest dzielenie
 
-  czynnik = pow(Modul(Dzielnik), 2);
-  Wynik = Dzielna * Sprzezenie(Dzielnik);
+  czynnik = pow(Dzielnik.Modul(), 2);
+  Wynik = *this * Dzielnik.Sprzezenie();
 
   Wynik = Wynik / czynnik;
 
