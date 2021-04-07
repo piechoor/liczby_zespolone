@@ -24,41 +24,46 @@ int main(int argc, char **argv)
     return 1;
   }
 
-
-  
-  cout << endl;
-  cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
-  cout << endl;
-
+  int proba;
   WyrazenieZesp   WyrZ_PytanieTestowe;
   LZespolona Odp, PrawOdp;
   Statystyka Odpowiedzi;
   Odpowiedzi.Inicjuj_Stat();
 
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << "Wyrazenie: " << endl;
-    cout << WyrZ_PytanieTestowe << endl;
-    cout << "Podaj wynik wyrazenia:";
+    cout << "Podaj wynik operacji: " << WyrZ_PytanieTestowe << "=" << endl;
+    cout << "Twoja odpowiedz: ";
     cin >> Odp;
     while (cin.fail()) {
       cin.clear();
-      cout << "Podano liczbe w zlym formacie, sprobuj jeszcze raz." << endl;
+      cout << "Blad zapisu liczby zespolonej. Sprobuj jeszcze raz." << endl << endl;
+      cin.ignore(100, '\n');
+      cout << "Twoja odpowiedz: ";
       cin >> Odp;
     }
     PrawOdp = WyrZ_PytanieTestowe.Oblicz();
     if (Odp.re == PrawOdp.re && Odp.im == PrawOdp.im) {
-      cout << "Prawidlowa odpowiedz." << endl;
+      cout << "Odpowiedz poprawna." << endl << endl;
       Odpowiedzi.Dobre++;
     }
     else {
-    cout << "Nierawidlowa odpowiedz." << endl;
-    Odpowiedzi.Zle++;
+      for (proba=0; proba<3; proba++) {
+        cout << "Bledna odpowiedz. Sprobuj jeszcze raz: ";
+        cin >> Odp;
+        if (Odp.re == PrawOdp.re && Odp.im == PrawOdp.im) {
+          cout << "Prawidlowa odpowiedz." << endl << endl;
+          Odpowiedzi.Dobre++;
+          break;
+        }
+      }
+      if (proba==3) {
+        cout << "Blad. Prawidlowym wynikiem jest: " << PrawOdp << endl << endl;
+        Odpowiedzi.Zle++;
+      }
     }
   }
 
-  
-  cout << endl;
+  cout << "Koniec testu" << endl << endl;
   Odpowiedzi.Wyswietl_Stat();
-  cout << "Koniec testu" << endl;
   cout << endl;
 }

@@ -11,9 +11,8 @@ void Statystyka::Inicjuj_Stat()
 
 void Statystyka::Wyswietl_Stat()
 {
-    cout << "\tStatystyka rozgrywki: " << endl;
-    cout << "Poprawnych odpowiedzi: " << this->Dobre << endl;
-    cout << "Blednych odpowiedzi: " << this->Zle << endl;
-    cout << "Procent prawidlowych odpowiedzi: " 
+    cout << "Ilosc dobrych odpowiedzi: " << this->Dobre << endl;
+    cout << "Ilosc blednych odpowiedzi: " << this->Zle << endl;
+    cout << "Wynik procentowy poprawnych odpowiedzi: " 
          << (100*this->Dobre)/(this->Dobre+this->Zle) << "%" << endl;
 }

@@ -99,11 +99,12 @@ LZespolona LZespolona::operator / (double Dzielnik) const
 {
   LZespolona Wynik;
 
+  if (Dzielnik == 0) 
+    cerr << "Proba podzielenia liczby zespolonej przez 0! Program zostal wstrzymany." << endl;
   assert(Dzielnik != 0); // Sprawdzenie czy dzielnik jest różny od zera
 
   Wynik.re = this->re / Dzielnik;
   Wynik.im = this->im / Dzielnik;
-
   return Wynik;
 }
 
@@ -120,13 +121,13 @@ LZespolona LZespolona::operator / (LZespolona Dzielnik)
   LZespolona Wynik;
   double czynnik;
 
+  if ((Dzielnik.re == 0) && (Dzielnik.im ==0)) 
+    cerr << "Proba podzielenia liczby zespolonej przez 0! Program zostal wstrzymany." << endl;
   assert((Dzielnik.re != 0) || (Dzielnik.im !=0)); // Sprawdzenie czy możliwe jest dzielenie
 
   czynnik = pow(Dzielnik.Modul(), 2);
   Wynik = *this * Dzielnik.Sprzezenie();
-
   Wynik = Wynik / czynnik;
-
   return Wynik;
 }
 
