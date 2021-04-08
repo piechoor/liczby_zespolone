@@ -3,52 +3,33 @@
 #include <iostream>
 
 /*!
- *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
+ *  Definicja struktury LZesplona, zapowiedzi
  *  przeciazen operatorow arytmetycznych dzialajacych na tej 
- *  strukturze.
- */
-
-
-/*!
- * Modeluje pojecie liczby zespolonej
+ *  strukturze oraz operacji potrzebnych do ich przeprowadzenia
  */
 struct  LZespolona 
 {
-  double   re;    /*! Pole repezentuje czesc rzeczywista. */
-  double   im;    /*! Pole repezentuje czesc urojona. */
+  double   re;    // Pole repezentuje czesc rzeczywista
+  double   im;    // Pole repezentuje czesc urojona
 
-  double Modul();
-  LZespolona Sprzezenie();
-  LZespolona operator + (LZespolona Z2) const;
-  LZespolona operator - (LZespolona Z2) const;
-  LZespolona operator * (LZespolona Z2) const;
-  LZespolona operator / (double Dzielnik) const;
-  LZespolona operator / (LZespolona Dzielnik);
+  double Modul(); // Funkcja zwracajaca modul liczby zespolonej
+  LZespolona Sprzezenie(); // Funckja zwracajaca liczbe bedaca sprezeniem zespolonej
+  LZespolona operator + (LZespolona Z2) const; // Przeciazenie operatora dodawania dla liczb zespolonych
+  LZespolona operator - (LZespolona Z2) const; // Przeciazenie operatora odejmowania dla liczb zespolonych
+  LZespolona operator * (LZespolona Z2) const; // Przeciazenie operatora mnozenia dla liczb zespolonych
+  LZespolona operator / (double Dzielnik) const; // Przeciazenie operatora dzielenia dla liczby zespolonej przez rzeczywista
+  LZespolona operator / (LZespolona Dzielnik); // Przeciazenie operatora dzielenia dla liczb zespolonych
+  bool operator == (LZespolona Z2); // Przeciazenie operatora porownania dla liczb zespolonych
 };
 
+/*
+ *  Przeciazenie strumienia wyjsciowego dla wyswietlania liczby zespolonej
+ */ 
 std::ostream& operator << (std::ostream &Str_wyj, LZespolona Z1);
 
+/*
+ *  Przeciazenie strumienia wejsciowego dla wczytywania liczby zespolonej
+ */ 
 std::istream& operator >> (std::istream &Str_wej, LZespolona &Z1);
-
-/*
-* Funckja zwraca sprzężenie pobranej liczby zespolonej
-*/
-
-/*
-* Funckja zwraca moduł pobranej liczby zespolonej
-*/
-
-/*
-* Przeciążenie operatora dzielenia dla opercji dzielenia liczby 
-* zespolonej przez liczbę rzeczywistą
-*/
-
-/*
-* Przeciążenia operatorów operacji na dwóch liczbach zespolonych
-*/
-//LZespolona operator + (LZespolona  Skl1,  LZespolona  Skl2);
-//LZespolona operator - (LZespolona Odjemna, LZespolona Odjemnik);
-//LZespolona operator * (LZespolona Czyn1, LZespolona Czyn2);
-
 
 #endif

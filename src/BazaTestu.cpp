@@ -6,8 +6,7 @@
 using namespace std;
 
 /*
- * Tablica, ktora jest widoczna tylko w tym module.
- * Zawiera ona tresc latwego testu.
+ * Tablica zawierajaca tresc latwego testu.
  */
 static WyrazenieZesp  TestLatwy[] =
   { {{2,1}, Op_Dodaj, {1,2}},
@@ -17,15 +16,13 @@ static WyrazenieZesp  TestLatwy[] =
   };
 
 /*
- * Analogicznie zdefiniuj test "trudne"
- *
+ * Tablica zawierajaca tresc trudnego testu.
  */
-
 static WyrazenieZesp  TestTrudny[] =
   { {{-17,98}, Op_Dodaj, {23,-59}}, // Wynik - (6+39i)
     {{57,6}, Op_Odejmij, {88,99}}, // Wynik - (-31-93i)
     {{3,4}, Op_Mnoz, {5,6}}, // Wynik - (-9+38i)
-    {{8,16}, Op_Dziel, {1,1}}, // Wynik - (12+4i)
+    {{5,10}, Op_Dziel, {0,1}}, // Wynik - (10-5i)
   };
 
 /*
@@ -52,9 +49,6 @@ void UstawTest( BazaTestu *wskBazaTestu, WyrazenieZesp *wskTabTestu, unsigned in
   wskBazaTestu->IndeksPytania = 0;
 }
 
-
-
-
 /*
  * Inicjalizuje test kojarzac zmienna dostepna poprzez wskaznik wskBazaTestu
  * z dana tablica wyrazen, ktora reprezentuje jeden z dwoch dopuszczalnych 
@@ -76,22 +70,21 @@ void UstawTest( BazaTestu *wskBazaTestu, WyrazenieZesp *wskTabTestu, unsigned in
  */
 bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
 {
+  // Inicjalizacja dla testu latwego
   if (!strcmp(sNazwaTestu,"latwy")) {
     UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
     return true;
   }
-  /*
-   * Analogicznie zrob inicjalizacje dla testu trudne
-   */
+
+  // Inicjalizacja dla testu trudnego
   if (!strcmp(sNazwaTestu,"trudny")) {
     UstawTest(wskBazaTestu,TestTrudny,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
     return true;
   }
+  // Sprawdzenie poprawnosci otwarcia testu
   cerr << "Otwarcie testu '" << sNazwaTestu << "' nie powiodlo sie." << endl;
   return false;
 }
-
-
 
 /*!
  * Funkcja udostepnia nastepne pytania o ile jest odpowiednia ich ilosc.

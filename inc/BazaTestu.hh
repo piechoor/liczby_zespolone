@@ -1,9 +1,7 @@
 #ifndef BAZATESTU_HH
 #define BAZATESTU_HH
 
-
 #include "WyrazenieZesp.hh"
-
 
 /*
  * Modeluje pojecie baze testu z zestawem pytan w tablicy
@@ -17,11 +15,11 @@ struct BazaTestu {
   unsigned int    IndeksPytania; /* Numer pytania, ktore ma byc pobrane jako nastepne */
 };
 
-
 /*
  * Inicjalizuje test powiazany z dana nazwa.
  */
 bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char*  sNazwaTestu );
+
 /*
  * Udostepnia nastepne pytanie z bazy.
  */
